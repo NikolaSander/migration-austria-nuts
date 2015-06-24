@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title>Internal Migration in Austria</title>
+  <meta name=description content="Internal Migration in Austria">
+  <meta name=viewport content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet" media="all">
+  
+  <script src="circular-migration-plot.min.js"></script>
+</head>
+<body>
+  <div id=container class="container">
+
+  	 <div class="social-wrap">
+		<div class="social">
+			<div class="fb-like" data-send="false" data-layout="button_count" data-width="90px" data-show-faces="false" data-font="lucida grande"></div>
+			<div id="plusone-div"></div>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Internal Migration in Austria" data-url="http://global-refugees.info"></a>
+			<div class="clear"></div>
+		</div>
+	</div>
+  
+   	<header role="banner">
+  		<h1 style="text-align:left">Internal Migration in Austria</h1>
+		
+	
+		<div class="credits" style="text-align:left">
+		<p>Gross flows between NUTS2 and NUTS3 Regions for 2002 and 2013, by selected age groups.</p>
+        <p>by <a href="http://nikolasander.com"  target="_blank">Nikola Sander</a> and <a href="http://www.metropop.eu"  target="_blank">Ramon Bauer</a>, 24 June 2015 </p>
+		</div>
+	<hr>
+	</header>	
+
+	<div class="wrap">
+		<main role="main">
+		<nav role=navigation>
+		<div id="timeline"></div>
+		</nav>		
+		<div id="chart"></div>
+		</main>
+	</div>
+
+  <script>
+     var labels = {
+		2002: '2002',
+		2003: '2002 18-24',
+		2004: '2002 25-34',
+		2005: '2002 35-49',
+		2006: '2002 50-64',
+		2013: '2013',
+		2014: '2013 18-24',
+		2015: '2013 25-34',
+		2016: '2013 35-49',
+		2017: '2013 50-64',
+    	}
+
+    CircularMigrationPlot({
+      data: 'nuts-data.json',
+      chart:{
+        element: '#chart',
+        mylayout: {
+          threshold: 300,
+          labelThreshold: 300,
+		  colors: ['#009900', '#00CC99', '#0099FF', '#003D66', '#9900CC', '#990000', '#FF6600','#FFCC00', '#ADFF2F']
+			},
+      },
+      timeline: {
+        element: '#timeline',
+        formatter: function(d) {
+          return labels[d]
+        }
+      }
+	  });
+  </script>
+ 
+
+
+	<footer role="contentinfo">
+ 		<div class="license">
+		<p>This visualisation has been created by <a href="http://nikolasander.com"  target="_blank">Nikola Sander</a> and <a href="http://www.metropop.eu"  target="_blank">Ramon Bauer</a> using a <a href="https://github.com/jo/circular-migration-plot"  target="_blank">custom d3.js library</a> 
+		originally developed by Null2 for <a href="http://www.global-migration.info"  target="_blank">The Global Flow of People</a> and is made available under <a href="http://creativecommons.org/licenses/by/4.0/"  target="_blank">CC BY 4.0</a></p> 
+		</div>
+	</footer>
+
+	<hr>
+
+   
+</div>
+	
+
+
+
+</body>
+</html>

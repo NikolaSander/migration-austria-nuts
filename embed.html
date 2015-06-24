@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title>The Global Flow of Refugees</title>
+  <meta name=description content="The Global Flow of Refugees">
+  <meta name=viewport content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet" media="all">
+
+  <script src="circular-migration-plot.min.js"></script>
+   <style>
+    body {
+      background-color: white;
+      text-align: center;
+      min-width: 200px;
+    }
+    #timeline {
+      position: relative;
+      margin-top: 3ex;
+    }
+    #diagram {
+      margin: 0 auto;
+      max-width: 700px;
+    }
+    footer {
+      position: absolute;
+      bottom: 1ex;
+      right: 0;
+    }
+    @media all and (max-width: 700px) {
+      .year label {
+        padding: 8px 10px 5px;
+        font-size: 13px;
+      }
+      svg {
+        font-size: 15px;
+      }
+      text.region {
+        font-size: 16px;
+      }
+    }
+    @media all and (max-width: 550px) {
+      .year label {
+        font-size: 11px;
+      }
+    }
+    @media all and (max-width: 450px) {
+      .year label {
+        font-size: 9px;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <h3>The Global Flow of Refugees</h3>
+  <p><a href="http://global-refugees.info/" target="_blank">global-refugees.info</a></p>
+ 
+  <nav>
+    <div id="timeline"></div>
+  </nav>
+  <div id="chart"></div>
+
+  <script>
+   var labels = {
+    2014: '2013',
+    2013: '2014',
+    }
+
+    CircularMigrationPlot({
+      data: 'refugee-data.json',
+      chart:{
+        element: '#chart',
+        mylayout: {
+          threshold: 1000,
+          labelThreshold: 10000,
+		  colors: ['#B80000','#FF6600','#009900','#4262A3','#333399','#00CCFF']  
+			  }
+      },
+      timeline: {
+        element: '#timeline',
+        formatter: function(d) {
+          return labels[d]
+        }
+      }
+	  });
+  </script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64372038-1', 'auto');
+  ga('send', 'pageview');
+</script>
+	
+</body>
+</html>
